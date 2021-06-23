@@ -15,6 +15,12 @@ public class HelloController {
     @Autowired
     private Person person;
 
+    @Value("${M2_HOME}")
+    private String msg;
+
+    @Value("${os.name}")
+    private String osName;
+
     @GetMapping("/")
     public String hello(){
         return person.getClass().toString();
@@ -24,5 +30,11 @@ public class HelloController {
     public Person person(){
         return person;
     }
+
+    @GetMapping("/msg")
+    public String getMsg(){
+        return msg+"===>"+osName;
+    }
+
 
 }
